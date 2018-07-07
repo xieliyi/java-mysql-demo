@@ -1,0 +1,65 @@
+#安装
+mysqld install
+#初始化
+mysqld --initialize --console
+#启动服务
+net start mysql
+#连接MySQL数据库：登录
+mysql -u root -p
+Enter password:******
+#退出
+exit
+
+#创建数据库
+CREATE DATABASE <数据库名>;
+mysql> create DATABASE RUNOOB;
+#删除数据库
+drop database <数据库名>;
+mysql> drop database RUNOOB;
+#选择数据库
+use <数据库名>;
+mysql> use RUNOOB;
+#显示数据库
+show databases;
+
+#创建数据表
+CREATE TABLE <table_name> (column_name column_type);
+mysql> CREATE TABLE runoob_tbl(
+   -> runoob_id INT NOT NULL AUTO_INCREMENT,
+   -> runoob_title VARCHAR(100) NOT NULL,
+   -> runoob_author VARCHAR(40) NOT NULL,
+   -> submission_date DATE,
+   -> PRIMARY KEY ( runoob_id )
+   -> )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+   
+#删除数据表
+DROP TABLE <table_name> ;
+mysql> DROP TABLE runoob_tbl;
+#插入数据
+INSERT INTO <table_name> ( field1, field2,...fieldN )
+                       VALUES
+                       ( value1, value2,...valueN );
+mysql> INSERT INTO runoob_tbl
+    -> (runoob_title, runoob_author, submission_date)
+    -> VALUES
+    -> ("学习 MySQL", "菜鸟教程", NOW());
+#读取数据表
+select * from <table_name>;
+mysql> select * from runoob_tbl;
+#查看表结构
+show tables;
+desc <table_name>;
+#查询数据
+SELECT column_name,column_name FROM <table_name>;
+SELECT * FROM <table_name> WHERE field='value';
+#修改数据
+UPDATE <table_name> SET fieldN='valueN' WHERE field='value'
+#删除数据
+DELETE FROM <table_name> WHERE field='value';
+
+
+#导出数据
+SELECT ... INTO OUTFILE 
+SELECT * FROM <table_name> 
+    -> INTO OUTFILE '/tmp/tutorials.txt';
+
